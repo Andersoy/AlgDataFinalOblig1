@@ -14,7 +14,7 @@ public class Oblig1 {
 
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
-        if(a.length == 0){
+        if (a.length == 0) {
             throw new NoSuchElementException("Arrayet er tomt");
         }
         int temp;
@@ -40,7 +40,7 @@ public class Oblig1 {
                 temp = a[i];
                 a[i] = a[i + 1];
                 a[i + 1] = temp;
-                teller ++;
+                teller++;
             }
 
         }
@@ -52,7 +52,7 @@ public class Oblig1 {
     ///// Oppgave 2 //////////////////////////////////////
     public static int antallUlikeSortert(int[] a) {
 
-        if(a.length == 0){
+        if (a.length == 0) {
             return 0;
         }
 
@@ -71,7 +71,7 @@ public class Oblig1 {
             throw new IllegalStateException("Tabellen er ikke sortert");
 
         } else {
-            for (int i = 0; i < a.length-1; i++) {
+            for (int i = 0; i < a.length - 1; i++) {
                 if (a[i] != a[i + 1]) {
                     teller++;
                 }
@@ -91,14 +91,14 @@ public class Oblig1 {
         int teller = 0;
 
 
-        for(int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             int erLike = 0;
-            for(int j = i+1; j < a.length; j++){
-                if(a[i] == a[j]){
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[i] == a[j]) {
                     erLike++;
                 }
             }
-            if(erLike == 0) {
+            if (erLike == 0) {
                 teller++;
             }
         }
@@ -110,7 +110,7 @@ public class Oblig1 {
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
 
-        if(a.length == 0){
+        if (a.length == 0) {
             return;
         }
         for (int i = 0; i < a.length; i++) {
@@ -118,7 +118,7 @@ public class Oblig1 {
                 for (int j = i; j < a.length; j++) {
                     if (a[j] % 2 != 0) {
                         int temp = a[i];
-                        a[i]= a[j];
+                        a[i] = a[j];
                         a[j] = temp;
                     }
                 }
@@ -127,8 +127,8 @@ public class Oblig1 {
 
         //finn index på første partall:
         int indexPartall = 0;
-        for(int i = 0; i < a.length; i++){
-            if(a[i]%2 == 0){
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
                 indexPartall = i;
                 break;
             }
@@ -137,19 +137,22 @@ public class Oblig1 {
         //sorter liste i forskjellige intervaller. Først oddetall og så partall.
 
         //Oddetall(index 0 til index første partall -1
-        bobleSortering(a, 0, indexPartall-1);
+        // bobleSortering(a, 0, indexPartall-1);
 
         //partall(indexPartall til a.length -1
-        bobleSortering(a, indexPartall, a.length-1);
-        throw new NotImplementedException();
+        // bobleSortering(a, indexPartall, a.length-1);
+
+        //bobleSortering(a,0,a.length-1);
+
+
     }
 
-    public static int[] bobleSortering(int[] a, int left, int right){
-        for(int i = left; i < right; i++){
-            for(int j = i+1; j <= right; j++){
-                if(a[i] > a[j]){
+    public static int[] bobleSortering(int[] a, int left, int right) {
+        for (int i = left; i < right; i++) {
+            for (int j = i + 1; j <= right; j++) {
+                if (a[i] > a[j]) {
                     int temp = a[i];
-                    a[i]= a[j];
+                    a[i] = a[j];
                     a[j] = temp;
                 }
             }
@@ -160,13 +163,64 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new NotImplementedException();
+        char sistVerdi;
+
+        if (a.length == 0) {
+            return;
+        }
+        else {
+            for (int i = 0; i < 1; i ++) {
+                sistVerdi = a[a.length-1];
+                for (int j = a.length-1; j > 0; j--) {
+                    a[j] = a[j - 1];
+                }
+                a[0]=sistVerdi;
+            }
+        }
     }
+
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new NotImplementedException();
+        int n;
+        if (a.length == 0) {
+            return;
+        } else {
+            n = a.length;
+        }
+        k = k % n;
+
+        if (k < 0 && n > 0) {
+            k = Math.abs(k);
+            roterArray(a, 0, k - 1);
+            roterArray(a, k, n - 1);
+            roterArray(a, 0, n - 1);
+        }
+        else if (k > 0 && n > 0) {
+            roterArray(a, 0, n - 1);
+            roterArray(a, 0, k - 1);
+            roterArray(a, k, n - 1);
+        }
+        else {
+            return;
+        }
+
     }
+
+    static void roterArray(char[] a, int start, int slutt)
+    {
+        char temp;
+        while (start < slutt) {
+            temp = a[start];
+            a[start] = a[slutt];
+            a[slutt] = temp;
+            start++;
+            slutt--;
+        }
+    }
+
+
+
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
