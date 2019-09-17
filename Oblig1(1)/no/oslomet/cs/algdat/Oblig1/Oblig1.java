@@ -264,7 +264,23 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
+        int kopi[] = new int[a.length];
+
+        for (int i = 0; i < a.length; i++) {
+            kopi[i] = a[i];
+        }
+        Arrays.sort(kopi);
+        int[] arrayUt = new int[a.length];
+
+        for (int i = 0; i < kopi.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if(kopi[i] == a[j]){
+                    arrayUt[i] = j ;
+                }
+            }
+
+        }
+        return arrayUt;
     }
 
 
