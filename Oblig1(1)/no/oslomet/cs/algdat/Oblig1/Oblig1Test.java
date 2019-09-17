@@ -271,6 +271,7 @@ public class Oblig1Test {
                         ("              Du fikk:         " + Arrays.toString(c));
 
                 antallFeil++;
+
                 break;
             }
         } while (nestePermutasjon(a));

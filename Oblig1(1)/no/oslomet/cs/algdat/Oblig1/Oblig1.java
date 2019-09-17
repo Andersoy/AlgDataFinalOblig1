@@ -90,7 +90,6 @@ public class Oblig1 {
 
         int teller = 0;
 
-
         for(int i = 0; i < a.length; i++){
             int erLike = 0;
             for(int j = i+1; j < a.length; j++){
@@ -103,25 +102,33 @@ public class Oblig1 {
             }
         }
         return teller;
-
-
     }
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
 
-        if(a.length == 0){
-            return;
-        }
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] % 2 == 0) {
-                for (int j = i; j < a.length; j++) {
-                    if (a[j] % 2 != 0) {
-                        int temp = a[i];
-                        a[i]= a[j];
-                        a[j] = temp;
-                    }
-                }
+
+        int v = 0;
+        int h = a.length-1;
+        int antallOddetall = 0;
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v]%2!=0) {
+                v++;   // h er stoppverdi for v
+                antallOddetall++;
+            }
+
+            while (v <= h && a[h]%2== 0) {
+                h--;  // v er stoppverdi for h
+            }
+
+            if (v < h){
+                int temp = a[v];
+                a[v]= a[h];
+                a[h] = temp;
+            }
+            else{
+                 break;
             }
         }
 
@@ -137,25 +144,42 @@ public class Oblig1 {
         //sorter liste i forskjellige intervaller. Først oddetall og så partall.
 
         //Oddetall(index 0 til index første partall -1
-        bobleSortering(a, 0, indexPartall-1);
+        quickSort(a, 0, indexPartall-1);
 
         //partall(indexPartall til a.length -1
-        bobleSortering(a, indexPartall, a.length-1);
-        throw new NotImplementedException();
+        quickSort(a, indexPartall, a.length-1);
+
+
     }
 
-    public static int[] bobleSortering(int[] a, int left, int right){
-        for(int i = left; i < right; i++){
-            for(int j = i+1; j <= right; j++){
-                if(a[i] > a[j]){
-                    int temp = a[i];
-                    a[i]= a[j];
-                    a[j] = temp;
-                }
+    public static void quickSort(int arr[], int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(arr, begin, end);
+
+            quickSort(arr, begin, partitionIndex-1);
+            quickSort(arr, partitionIndex+1, end);
+        }
+    }
+
+    private static int partition(int a[], int begin, int end) {
+        int pivot = a[end];
+        int i = (begin-1);
+
+        for (int j = begin; j < end; j++) {
+            if (a[j] <= pivot) {
+                i++;
+
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
             }
         }
-        return a;
 
+        int temp = a[i+1];
+        a[i+1] = a[end];
+        a[end] = temp;
+
+        return i+1;
     }
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -171,6 +195,8 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
+
+
         throw new NotImplementedException();
     }
 
