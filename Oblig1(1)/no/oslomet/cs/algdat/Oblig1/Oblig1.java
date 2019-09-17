@@ -279,7 +279,26 @@ public class Oblig1 {
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new NotImplementedException();
+        char[] a_array = a.toCharArray();
+        char[] b_array = b.toCharArray();
+
+        int treff = 0;
+
+        for (int i = 0; i < a_array.length; i++) {
+            for (int j = 0; j < b_array.length; j++) {
+                if (a_array[i] == b_array[j]) {
+                    treff++;
+                    b_array[j] = 0;
+                    break;
+                }
+            }
+        }
+
+        if (a_array.length == treff) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }  // Oblig1
