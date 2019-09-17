@@ -171,12 +171,71 @@ public class Oblig1 {
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new NotImplementedException();
+        char[] s1 = s.toCharArray();
+        char[] s2 = t.toCharArray();
+
+        String ut = "";
+
+        if(s1.length == 0 && s2.length == 0) {
+            return ut;
+        } if (s1.length == 0) {
+            ut = t;
+            return ut;
+        } if (s2.length == 0){
+            ut += s;
+            return ut;
+        }
+
+        if (s1.length > s2.length) {
+            for (int i = 0; i < s1.length; i++) {
+                ut += s1[i];
+                if (i < s2.length) {
+                    ut += s2[i];
+                }
+            }
+        } else {
+            for (int i = 0; i < s2.length; i++) {
+
+                if (i < s1.length) {
+                    ut += s1[i];
+                }
+                ut += s2[i];
+            }
+        }
+        return ut;
     }
 
     /// 7b)
     public static String flett(String... s) {
-        throw new NotImplementedException();
+
+        String ut = "";
+        int hoyest = 0;
+        for (int i = 0; i < s.length; i++) {
+            if (s[i].length() > hoyest ) {
+                hoyest = s[i].length();
+            }
+        }
+        char[][] charArray = new char[s.length][hoyest];
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < hoyest; j++) {
+                try {
+                    charArray[i][j] = s[i].charAt(j);
+                } catch (Exception e) {
+
+                }
+            }
+        }
+        String flett = "";
+
+        for (int i = 0; i < hoyest; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if(!(charArray[j][i] == 0)) {
+                    flett += charArray[j][i];
+                }
+            }
+        }
+
+        return flett;
     }
 
     ///// Oppgave 8 //////////////////////////////////////
