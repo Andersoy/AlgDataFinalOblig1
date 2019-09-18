@@ -355,10 +355,54 @@ public class Oblig1 {
         a[j] = temp;
     }
 
-
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new NotImplementedException();
+
+        if(a.length < 3){
+            throw new NoSuchElementException("Arrayet er for kort");
+        }
+
+
+
+        int[] treTallFraA = {a[0], a[1], a[2]};
+
+
+        int[] indexTall = indekssortering(treTallFraA);
+
+        int minstIndex = indexTall[0];
+        int nestMinstIndex = indexTall[1];
+        int tredjeMinstIndex = indexTall[2];
+
+        int minstVerdi = a[minstIndex];
+        int nestMinstVerdi = a[nestMinstIndex];
+        int tredjeMinstVerdi = a[tredjeMinstIndex];
+
+        for(int i = 3; i < a.length; i++){
+            if(a[i] < minstVerdi){
+                tredjeMinstVerdi = nestMinstVerdi;
+                nestMinstVerdi = minstVerdi;
+
+                minstVerdi = a[i];
+                tredjeMinstIndex = nestMinstIndex;
+                nestMinstIndex = minstIndex;
+                minstIndex = i;
+            }
+            else if(a[i] > minstVerdi && a[i] < nestMinstVerdi){
+                tredjeMinstVerdi = nestMinstVerdi;
+                nestMinstVerdi = a[i];
+
+                tredjeMinstIndex = nestMinstIndex;
+                nestMinstIndex = i;
+            }
+            else if(a[i] > nestMinstVerdi && a[i] < tredjeMinstVerdi){
+                tredjeMinstVerdi = a[i];
+                tredjeMinstIndex = i;
+            }
+
+        }
+        int[] sortertTabellIndex = {minstIndex, nestMinstIndex, tredjeMinstIndex};
+        return sortertTabellIndex;
+
     }
 
     ///// Oppgave 10 //////////////////////////////////////
