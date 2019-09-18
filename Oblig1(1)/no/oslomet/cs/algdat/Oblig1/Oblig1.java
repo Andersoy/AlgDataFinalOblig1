@@ -206,7 +206,6 @@ public class Oblig1 {
         }
 
     }
-
     static void roterArray(char[] a, int start, int slutt)
     {
         char temp;
@@ -218,8 +217,6 @@ public class Oblig1 {
             slutt--;
         }
     }
-
-
 
 
     ///// Oppgave 7 //////////////////////////////////////
@@ -235,8 +232,20 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
+        int[] indeksTabell = new int[a.length];
+        int minstVerdi = a[0];
+
+        for (int i = 0; i < a.length; i++) {
+            int minstIndeks=0;
+            if (a[i] < minstVerdi) {
+                minstVerdi = a[i]; //12
+                minstIndeks = i; //6
+            }
+            indeksTabell[i]=minstIndeks;
+        }
+        return indeksTabell;
     }
+
 
 
     ///// Oppgave 9 //////////////////////////////////////
