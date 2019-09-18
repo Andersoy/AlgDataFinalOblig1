@@ -184,12 +184,58 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new NotImplementedException();
+        char sistVerdi;
+
+        if (a.length == 0) {
+            return;
+        }
+        else {
+            for (int i = 0; i < 1; i ++) {
+                sistVerdi = a[a.length-1];
+                for (int j = a.length-1; j > 0; j--) {
+                    a[j] = a[j - 1];
+                }
+                a[0]=sistVerdi;
+            }
+        }
     }
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new NotImplementedException();
+        int n;
+        if (a.length == 0) {
+            return;
+        } else {
+            n = a.length;
+        }
+        k = k % n;
+
+        if (k < 0 && n > 0) {
+            k = Math.abs(k);
+            roterArray(a, 0, k - 1);
+            roterArray(a, k, n - 1);
+            roterArray(a, 0, n - 1);
+        }
+        else if (k > 0 && n > 0) {
+            roterArray(a, 0, n - 1);
+            roterArray(a, 0, k - 1);
+            roterArray(a, k, n - 1);
+        }
+        else {
+            return;
+        }
+
+    }
+    static void roterArray(char[] a, int start, int slutt)
+    {
+        char temp;
+        while (start < slutt) {
+            temp = a[start];
+            a[start] = a[slutt];
+            a[slutt] = temp;
+            start++;
+            slutt--;
+        }
     }
 
     ///// Oppgave 7 //////////////////////////////////////
