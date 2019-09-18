@@ -7,12 +7,30 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+/*
+Gruppemedlemmer:    S331398 - Anders Oeyrehagen
+                    S330474 - Anders Magnus Ytterboee
+                    S330473 - Tommy Grut
+                    S331386 - Tobias Dyre Evju
+                    S331359 - Theodor Fredheim Aandal
 
+ */
 public class Oblig1 {
     private Oblig1() {
     }
 
     ///// Oppgave 1 //////////////////////////////////////
+
+    /**
+     * Det blir flest ombyttinger når det høyeste tallet står først
+     * Det blir færrest ombyttinger når arrayet står i stigende rekkefølge.
+     * Vi testet to lister. En med lengde 3 og en med lengde 4 og regnet ut snittet for antall ombyttinger for hver av
+     * listene. Vi testet alle mulige permutasjoner for tallene 1-4. Brukte ikke like tall. Resultatet av dette ga
+     * gjennomsnitt for lengde 3 på 1,67 ombyttinger, og lengde 4 på 1,92 ombyttinger.
+     * Vi har sett online at snitt for bubblesort skal gi 1,5 ombyttinger for en liste med 3 tall og 3 ombyttinger for
+     * en liste med 4 tall. Formel: (n*(n-1))/4.
+     */
+
     public static int maks(int[] a) {
         if(a.length == 0){
             throw new NoSuchElementException("Arrayet er tomt");
@@ -47,6 +65,9 @@ public class Oblig1 {
         return teller;
 
 
+
+
+
     }
 
     ///// Oppgave 2 //////////////////////////////////////
@@ -76,12 +97,8 @@ public class Oblig1 {
                     teller++;
                 }
             }
-            System.out.print(teller);
-            System.out.println(Arrays.toString(a));
             return teller;
-
         }
-
     }
 
 
