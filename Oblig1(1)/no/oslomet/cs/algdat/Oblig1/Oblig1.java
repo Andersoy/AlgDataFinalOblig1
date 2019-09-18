@@ -310,7 +310,49 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
+        int[] indexTabell = new int[a.length];
+
+        int[] kopiAvA = new int[a.length];
+
+        for(int i = 0; i < a.length; i++){
+            kopiAvA[i] = a[i];
+        }
+
+        for(int j = 0; j < indexTabell.length; j++){
+            indexTabell[j] = j;
+        }
+
+        for(int k = 0; k < a.length; k++){
+
+            int indexTilMindre = min(kopiAvA, k);
+
+            bytt(kopiAvA, k, indexTilMindre);
+            bytt(indexTabell, k, indexTilMindre);
+
+        }
+        return indexTabell;
+    }
+
+
+    public static int min(int[] a, int left){
+        int lavesteVerdiIndex = -1;
+        int lavesteVerdi = 99999;
+
+        for(int i = left; i < a.length; i++){
+
+            if(a[i] < lavesteVerdi){
+                lavesteVerdi = a[i];
+                lavesteVerdiIndex = i;
+            }
+        }
+        return lavesteVerdiIndex;
+    }
+
+
+    public static void bytt(int[] a, int i, int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
 
